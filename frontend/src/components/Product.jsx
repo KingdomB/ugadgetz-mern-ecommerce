@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import Rating from './Rating'
 
 // TODO: 1. IMPLEMENT d-flex align-items-stretch to set height 2. Remove seeded data.
 const Product = ({ product }) => {
@@ -12,10 +13,14 @@ const Product = ({ product }) => {
 
       <Card.Body>
         <Link to={`/product/${product.id}`}>
-          <Card.Title as='div'>
+          <Card.Title as='div' className='product-title'>
             <strong>{product.name}</strong>
           </Card.Title>
         </Link>
+
+        <Card.Text>
+          <Rating value={product.rating} text={`${product.numReviews} reviews`}></Rating>
+        </Card.Text>
         
         <Card.Text as='h3'>${product.price}</Card.Text>
       </Card.Body>
